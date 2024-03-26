@@ -17,7 +17,7 @@ si = {}
 for i in code:
     for j in i['source']:
         if "#si-exercise" in j:
-            compile("".join(i['source']), '<string>', 'exec')
+            exec(compile("".join(i['source']), '<string>', 'exec'))
 
 
 
@@ -26,7 +26,7 @@ class TestCase(unittest.TestCase):
 
     def testRunOLS(self):
       try:
-        data = pd.read_csv("/tests/files/assignment8Data.csv")
+        data = pd.read_csv("tests/files/assignment8Data.csv")
         x = data[['sex','age','educ','white']]
         y = data['incwage']
         reg = RegressionModel(x, y, create_intercept=True)
